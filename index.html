@@ -5,39 +5,112 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Bharrat Gehlot</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    :root {
+      --bg-light: #f4f4f4;
+      --bg-dark: #121212;
+      --text-light: #1a1a1a;
+      --text-dark: #f0f0f0;
+      --accent: #ff9800;
     }
 
     body {
+      margin: 0;
+      padding: 0;
       height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      background: linear-gradient(135deg, #1e3c72, #2a5298);
-      font-family: 'Segoe UI', sans-serif;
-      color: #ffffff;
-      text-align: center;
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-dark);
+      transition: all 0.3s ease-in-out;
+      animation: fadeIn 1.5s ease-out;
     }
 
     h1 {
       font-size: 4rem;
-      font-weight: bold;
-      margin-bottom: 1rem;
+      font-weight: 700;
+      margin: 0.5rem;
     }
 
     p {
       font-size: 1.5rem;
       font-style: italic;
-      opacity: 0.9;
+      margin-bottom: 2rem;
+    }
+
+    .theme-toggle {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: var(--accent);
+      border: none;
+      color: white;
+      padding: 0.5rem 1rem;
+      font-size: 0.9rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+
+    .theme-toggle:hover {
+      background: #e08900;
+    }
+
+    .contact-btn {
+      padding: 0.7rem 1.5rem;
+      background: transparent;
+      border: 2px solid var(--accent);
+      color: var(--accent);
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .contact-btn:hover {
+      background: var(--accent);
+      color: white;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    body.light-mode {
+      background-color: var(--bg-light);
+      color: var(--text-light);
+    }
+
+    body.light-mode .contact-btn {
+      border-color: #ff9800;
+      color: #ff9800;
+    }
+
+    body.light-mode .theme-toggle {
+      background-color: #ff9800;
     }
   </style>
 </head>
 <body>
+  <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
+
   <h1>Bharrat Gehlot</h1>
   <p>I code, you code, we can become friends</p>
+  <button class="contact-btn" onclick="alert('Email: bharrat@example.com')">Contact</button>
+
+  <script>
+    function toggleTheme() {
+      document.body.classList.toggle("light-mode");
+    }
+  </script>
 </body>
 </html>
